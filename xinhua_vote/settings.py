@@ -56,7 +56,7 @@ ROOT_URLCONF = 'xinhua_vote.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(os.path.dirname(__file__), '../xinhua_vote/templates').replace('\\', '/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,9 +124,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static'
 
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../templates').replace('\\', '/'),
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static/vote"),
+]
 
 LOGGING = {
     'version': 1,
