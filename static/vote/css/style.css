@@ -1,0 +1,153 @@
+
+
+
+body{background: url(/static/images/icon_bg.jpg) center top no-repeat; font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;}
+
+.main{margin-top: 8em; }
+.main > img{margin-right: 4.6em; max-width:370px; width:100%;}
+.main>h4{color: #333; font-size: 30px; text-align: center; margin-bottom: 1.2em;}
+.table-list{background: #fff;}
+.table-list>thead>tr>th{background-color: #e50e2c; border-bottom: none; color: #fff; padding: 15px; font-size: 16px; font-weight: normal;}
+.table-list>tbody>tr>td{vertical-align: middle;border-top: none; padding: 10px;}
+.table-list>tbody>tr>td:last-child{font-size: 16px;}
+.table-list>tbody>tr:nth-child(even){background: #f9f9f9;}
+.progress{box-shadow: none; background: none; border-radius: 0; overflow: initial; height: auto; line-height: 13px;}
+.progress-bar{box-shadow: none; height: 12px; }
+.progress>span{position: relative; left: 4px;}
+
+.progress-box{
+	display: block;
+	height: 12px;
+	transition: width .6s ease; 
+    
+     display: inline-block;
+}
+.progress-inner{
+	float: left;
+    width: 0;
+   
+    height: 100%;
+    width: 100%;
+     -webkit-animation: progressbar 3s ;
+     animation: progressbar 3s; 
+}
+
+@-webkit-keyframes progressbar{
+	from {width:0}to {width:100%}
+}
+@keyframes progressbar {
+	from {width:0}to {width:100%}
+}
+
+.progress-color1{background: #a8ce46;}
+.progress-color2{background: #e23b67;}
+.progress-color3{background: #26a0dd;}
+.progress-color4{background: #c579db;}
+
+.table-list img{margin-right: 30px; width:72px; height: 72px;}
+.table-item{overflow: hidden;}
+.table-item > h4{font-size: 16px; margin-top: 14px;}
+
+.footer{width: 100%; background: url(/static/images/icon_footer.png) center top no-repeat; height: 625px;}
+
+
+/* content
+ -----------------------------------------------*/
+.vote-body{overflow: hidden;}
+.vote-item1{border-bottom: 1px solid #cecece; padding-bottom: 10px;}
+.vote-item1 > b{color: #666; font-size: 15px; display: block; margin-bottom: 14px;}
+.vote-item1 > b span{color: red;}
+.vote-txt p{color: #666;}
+
+.vote-item2{padding-top: 20px;}
+.vote-item2 button{width: 177px;height: 44px;}
+.vote-item2 button:hover,
+.vote-item2 button:focus{color: #fff;}
+.vote-item2 button:hover{background: #d71732;}
+.vote-item2 span{margin-left: 6%;}
+.vote-item2 span a{color: red;}
+
+.ripple {
+  position: absolute;
+  background: rgba(0,0,0,.15);
+  border-radius: 100%;
+  transform: scale(0);
+  pointer-events: none;
+}
+.ripple.show {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* list
+ -----------------------------------------------*/
+.list-body img{width: 100%; }
+.list-item{margin: 0 8px; text-align: center; margin-bottom: 4em;}
+.list-item b{display: block; margin: 20px 0 10px;}
+.list-item p span a{color:#eb1533;}
+.list-item p > a{margin-left: 10px;}
+.list-item button{width: 149px;height: 39px;}
+
+
+/* public
+ -----------------------------------------------*/
+.vote-item2 button,
+.list-item button{position: relative;overflow: hidden;display: inline-block;background: #eb1533;color: #fff;border-radius: 2px;outline: none;border: none;cursor: pointer;}
+.vote-item2 button:hover,
+.vote-item2 button:focus,
+.list-item button:hover,
+.list-item button:focus{color: #fff;}
+
+.vote-item2 button:hover,
+.list-item button:hover{background: #d71732;}
+
+
+/* @media
+ -----------------------------------------------*/
+@media (min-width: 1200px){
+	.container {
+    	width: 1000px;
+	}
+}
+
+@media (min-width: 768px){
+	.list-body img{
+		height:256px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
