@@ -36,9 +36,9 @@
 					<b>姓名：{{ one_candidate.name }}</b>
 					<p>
 						<span>票数：<a href="">{{ one_candidate.voted }}</a> 票</span>
-						<a href="charts.html">查看排行</a>
+						<a href="/charts/">查看排行</a>
 					</p>
-					<button class="btn">投他一票</button>
+					<button class="btn" onclick="window.location.href='/do_vote/list/{{ one_candidate.id }}/'">投他一票</button>
 				</div>
 			</div>
             {% endfor %}

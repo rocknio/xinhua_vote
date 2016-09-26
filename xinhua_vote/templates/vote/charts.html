@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+
 <!-- 引入 Bootstrap -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>	
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" href={% static "css/bootstrap.min.css" %}/>
+<link rel="stylesheet" type="text/css" href={% static "css/style.css" %}/>
 <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
 <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
 <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src={% static "js/html5shiv.js" %}></script>
+    <script src={% static "js/respond.min.js" %}></script>
 <![endif]-->
 
 <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src={% static "js/jquery-1.11.3.min.js" %}></script>
 <!-- 包括所有已编译的插件 -->
-<script src="js/bootstrap.min.js"></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
 <title>排行榜</title>
 </head>
 <body>
 <div class="container">
 	<div class="header">
-		<img src="images/icon_title.png"/>
+		<img src={% static "images/icon_title.png" %}/>
 	</div>
 	<div class="main">
 		<h4>竞选排行榜</h4>
@@ -34,131 +37,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						<a href="" class="pull-left"><img src="images/icon_face.png" title="查看详情" /></a>
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 80%">
-									<em class="progress-inner progress-color1"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 70%">
-									<em class="progress-inner progress-color2"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 60%">
-									<em class="progress-inner progress-color3"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 50%">
-									<em class="progress-inner progress-color4"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href="" class="pull-left"><img src="images/icon_face.png" title="查看详情" /></a>
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 80%">
-									<em class="progress-inner progress-color1"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 70%">
-									<em class="progress-inner progress-color2"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 60%">
-									<em class="progress-inner progress-color3"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
-				<tr>
-					<td>
-						<a href=""><img class="pull-left" src="images/icon_face.png" alt="" /></a>
-						
-						<div class="table-item">
-							<h4>王小明</h4>
-							<div>
-								<div class="progress-box" style="width: 50%">
-									<em class="progress-inner progress-color4"></em>
-								</div>
-								<span>177票（100%）</span>
-							</div>
-						</div>
-					</td>
-					<td>01名</td>
-				</tr>
+                {% for one_candidate in candidates %}
+                    <tr>
+                        <td>
+                            <a href="" class="pull-left"><img src={{ one_candidate.pic_name }} title="查看详情" /></a>
+                            <div class="table-item">
+                                <h4>{{ one_candidate.name }}</h4>
+                                <div>
+                                    <div class="progress-box" style={{ one_candidate.bar_style | safe }}>
+                                        <em class={{ one_candidate.bar_color | safe }}></em>
+                                    </div>
+                                    <span>{{ one_candidate.voted }}票（{{ one_candidate.percentage }}）</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ one_candidate.rank }}名</td>
+				    </tr>
+                {% endfor %}
 			</tbody>
 		</table>
 	</div>

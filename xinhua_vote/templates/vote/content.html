@@ -28,20 +28,20 @@
 		<img src={% static "images/icon_title.png" %}/>
 	</div>
 	<div class="main">
-		<img class="pull-left" src={{ cadidate.pic_name }}/>
+		<img class="pull-left" src={{ candidate.pic_name }}/>
 		<div class="vote-body">
 			<div class="vote-item1">
 				<b>姓名：{{ candidate.name }}</b>
 				<b>自我介绍：</b>
 				<div class="vote-txt">
-                    {% for one_line in lines %}
+                    {% for one_line in candidate.lines %}
                         <p>{{ one_line }}</p>
                     {% endfor %}
 				</div>
 {#				<b>竞选宣言：<span>喜欢我就投我一票吧！</span></b>#}
 			</div>
 			<div class="vote-item2">
-				<button class="btn">投他一票</button>
+				<button class="btn" onclick="window.location.href='/do_vote/content/{{ candidate.id }}/'">投他一票</button>
 				<span>
 					名次:<a href="">{{ candidate.rank }}</a>名
 				</span>
