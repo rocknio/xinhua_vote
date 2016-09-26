@@ -567,3 +567,93 @@ ValueError: The view vote.views.show_charts didn't return an HttpResponse object
 2016-09-26 17:35:41,243 [WARNING][Thread-3:140443315390208] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/
 2016-09-26 17:35:41,925 [WARNING][Thread-4:140443315390208] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/
 2016-09-26 17:36:06,729 [WARNING][Thread-4:140282672011008] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/1/change/
+2016-09-26 22:19:52,161 [ERROR][Thread-2:5764] [exception.handle_uncaught_exception django.request:124] -- Internal Server Error: /list/
+Traceback (most recent call last):
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PycharmProjects\xinhua_vote\vote\views.py", line 55, in show_main_list
+    echostr = is_request_from_wechat(request, request.method)
+  File "D:\PycharmProjects\xinhua_vote\vote\views.py", line 43, in is_request_from_wechat
+    tmp_str = hashlib.sha1(tmp_str).hexdigest()
+TypeError: Unicode-objects must be encoded before hashing
+2016-09-26 22:19:59,751 [WARNING][Thread-3:4628] [base.get_response django.request:152] -- Not Found: /favicon.ico
+2016-09-26 22:21:08,545 [WARNING][Thread-14:3440] [base.get_response django.request:152] -- Not Found: /chart/
+2016-09-26 22:21:18,941 [ERROR][Thread-19:7204] [exception.handle_uncaught_exception django.request:124] -- Internal Server Error: /charts/
+Traceback (most recent call last):
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PycharmProjects\xinhua_vote\vote\views.py", line 102, in show_charts
+    echostr = is_request_from_wechat(request, request.method)
+  File "D:\PycharmProjects\xinhua_vote\vote\views.py", line 43, in is_request_from_wechat
+    tmp_str = hashlib.sha1(tmp_str).hexdigest()
+TypeError: Unicode-objects must be encoded before hashing
+2016-09-26 22:29:13,474 [ERROR][Thread-27:7764] [exception.handle_uncaught_exception django.request:124] -- Internal Server Error: /admin/vote/candidate/
+Traceback (most recent call last):
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: vote_candidate
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\exception.py", line 39, in inner
+    response = get_response(request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\contrib\admin\options.py", line 544, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\views\decorators\cache.py", line 57, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\contrib\admin\sites.py", line 211, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\decorators.py", line 67, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\decorators.py", line 149, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\decorators.py", line 63, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\contrib\admin\options.py", line 1543, in changelist_view
+    self.list_max_show_all, self.list_editable, self,
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\contrib\admin\views\main.py", line 79, in __init__
+    self.get_results(request)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\contrib\admin\views\main.py", line 172, in get_results
+    result_count = paginator.count
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\core\paginator.py", line 72, in count
+    return self.object_list.count()
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\query.py", line 369, in count
+    return self.query.get_count(using=self.db)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\sql\query.py", line 476, in get_count
+    number = obj.get_aggregation(using, ['__count'])['__count']
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\sql\query.py", line 457, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\models\sql\compiler.py", line 835, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: vote_candidate

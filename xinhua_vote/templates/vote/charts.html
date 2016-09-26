@@ -40,14 +40,14 @@
                 {% for one_candidate in candidates %}
                     <tr>
                         <td>
-                            <a href="" class="pull-left"><img src={{ one_candidate.pic_name }} title="查看详情" /></a>
+                            <a href="/content/{{ one_candidate.id }}/" class="pull-left"><img src={{ one_candidate.pic_name }} title="查看详情" /></a>
                             <div class="table-item">
                                 <h4>{{ one_candidate.name }}</h4>
                                 <div>
                                     <div class="progress-box" style={{ one_candidate.bar_style | safe }}>
                                         <em class={{ one_candidate.bar_color | safe }}></em>
                                     </div>
-                                    <span>{{ one_candidate.voted }}票（{{ one_candidate.percentage }}）</span>
+                                    <span>{{ one_candidate.voted }} 票</span>
                                 </div>
                             </div>
                         </td>

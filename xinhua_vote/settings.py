@@ -128,6 +128,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/vote"),
 ]
 
+WECHAT_VOTE_OPENID = 'gh_5363e9f32c9c'
+WECHAT_VOTE_TOKEN = 'xinhua_vote'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,

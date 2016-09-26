@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from vote.models import Candidate
 from django.db.models import Sum, F
+from xinhua_vote.settings import WECHAT_VOTE_TOKEN
+import logging
+import hashlib
+
+# 获取的logger
+logger = logging.getLogger(__name__)
 
 
 def get_rank(userid):
@@ -20,6 +26,38 @@ def get_rank(userid):
     return ret
 
 
+def is_request_from_wechat(request, http_method):
+    """
+    :param http_method:
+    :param request:
+    :return:
+    """
+    signature = request.GET.get('signature', '')
+    timestamp = request.GET.get('timestamp', '')
+    nonce = request.GET.get('nonce', '')
+    echostr = request.GET.get('echostr', '')
+
+    tmp_list = [WECHAT_VOTE_TOKEN, timestamp, nonce]
+    tmp_list.sort()
+    tmp_str = ''.join(tmp_list)
+    tmp_str = hashlib.sha1(tmp_str).hexdigest()
+
+    if signature == tmp_str:
+        if http_method == 'POST':
+            echostr = 'OK'
+        return echostr
+    else:
+        return ''
+
+
+def wechat_check(request):
+    # 检查是否是微信服务器发的有效消息
+    echostr = is_request_from_wechat(request, request.method)
+    if echostr == '':
+        logger.warn('receive msg is not from Wechat Services!')
+        return HttpResponse('who you are?')
+
+
 def show_main_list(request):
     try:
         candidate_objects = Candidate.objects.all()
@@ -33,7 +71,7 @@ def show_main_list(request):
             })
         return render_to_response("vote/list.html", {"candidates": candidates})
     except Exception as err:
-        print("err = {}".format(err))
+        logger.error("err = {}".format(err))
         return render_to_response("vote/list.html", {"candidates": {}})
 
 
@@ -51,7 +89,7 @@ def show_contents(request, main_id):
 
         return render_to_response("vote/content.html", {"candidate": candidate})
     except Exception as err:
-        print("err = {}".format(err))
+        logger.error("err = {}".format(err))
         return HttpResponseRedirect('/list/')
 
 
@@ -77,7 +115,7 @@ def show_charts(request):
 
         return render_to_response("vote/charts.html", {"candidates": candidate_rank_list})
     except Exception as err:
-        print("err = {}".format(err))
+        logger.error("err = {}".format(err))
         return HttpResponseRedirect('/list/')
 
 
@@ -85,7 +123,7 @@ def do_vote(request, source, voted_id):
     try:
         Candidate.objects.filter(id=voted_id).update(voted=F('voted') + 1)
     except Exception as err:
-        print("err = {}".format(err))
+        logger.error("err = {}".format(err))
 
     if source == "list":
         return HttpResponseRedirect('/list/')

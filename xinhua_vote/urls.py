@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from vote.views import show_main_list, show_contents, show_charts, do_vote
+from vote.views import show_main_list, show_contents, show_charts, do_vote, wechat_check
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^content/(\d)/$', show_contents),
     url(r'^list/', show_main_list),
     url(r'^charts/', show_charts),
-    url(r'^do_vote/(\w+)/(\d)/$', do_vote)
+    url(r'^do_vote/(\w+)/(\d)/$', do_vote),
+    url(r'^wechat/', wechat_check)
 ]
