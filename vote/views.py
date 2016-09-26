@@ -13,6 +13,7 @@ def get_rank(userid):
         i += 1
         if one_candidate.id == userid:
             break
+
     ret = str(i)
     if ret.__len__() < 2:
         ret = '0' + ret
