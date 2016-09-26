@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from vote.models import Candidate
+from vote.models import Candidate, VoteAction
 
 
 class CandidateAdmin(admin.ModelAdmin):
@@ -13,3 +13,27 @@ class CandidateAdmin(admin.ModelAdmin):
     fields = ('name', 'description', 'pic_name')
 
 admin.site.register(Candidate, CandidateAdmin)
+
+
+class VoteActionAdmin(admin.ModelAdmin):
+    actions = None
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    # def has_change_permission(self, request, obj=None):
+    #     if obj is None:
+    #         return True
+    #     else:
+    #         return False
+
+    list_display = ('openid', 'voteid', 'votetime')
+    ordering = ('-votetime',)
+    readonly_fields = ('openid', 'voteid', 'votetime')
+
+
+admin.site.register(VoteAction, VoteActionAdmin)
+

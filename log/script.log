@@ -561,3 +561,9 @@ ValueError: The view vote.views.show_charts didn't return an HttpResponse object
 2016-09-26 14:23:31,261 [WARNING][Thread-3:140004606588672] [base.get_response django.request:152] -- Not Found: /do_vote/3/
 2016-09-26 14:23:44,275 [WARNING][Thread-5:140004606588672] [base.get_response django.request:152] -- Not Found: /do_vote/list/1/
 2016-09-26 14:24:34,665 [WARNING][Thread-15:140593934100224] [base.get_response django.request:152] -- Not Found: /do_vote/list/1/
+2016-09-26 17:35:14,045 [WARNING][Thread-14:139769257834240] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/1/change/
+2016-09-26 17:35:20,956 [WARNING][Thread-18:139769257834240] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/1/change/
+2016-09-26 17:35:40,578 [WARNING][Thread-2:140443315390208] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/
+2016-09-26 17:35:41,243 [WARNING][Thread-3:140443315390208] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/
+2016-09-26 17:35:41,925 [WARNING][Thread-4:140443315390208] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/
+2016-09-26 17:36:06,729 [WARNING][Thread-4:140282672011008] [exception.response_for_exception django.request:56] -- Forbidden (Permission denied): /admin/vote/voteaction/1/change/
