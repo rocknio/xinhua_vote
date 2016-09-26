@@ -6819,3 +6819,317 @@ Traceback (most recent call last):
 django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'None': None, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7ffabc3e2128>, 'DEFAULT_MESSAGE_LEVELS': {'ERROR': 40, 'DEBUG': 10, 'SUCCESS': 25, 'WARNING': 30, 'INFO': 20}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7ffabc906320>, 'request': <WSGIRequest: GET '/admin/'>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7ffabc625bf8>>}, {}, {'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8ced30>, 'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8cec88>, 'available_apps': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc6406a0>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc640978>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'has_permission': True, 'app_list': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc9061d0>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc640198>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'LANGUAGE_BIDI': False, 'site_url': '/', 'LANGUAGE_CODE': 'zh-hans', 'title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd85af28>}]"
 2016-09-26 15:20:56,859 [DEBUG][Thread-98:140714797164288] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
 2016-09-26 15:20:56,865 [INFO][Thread-98:140714797164288] [basehttp.log_message django.server:131] -- "GET /admin/ HTTP/1.1" 200 6446
+2016-09-26 16:08:49,176 [DEBUG][Thread-100:140714788771584] [utils.execute django.db.backends:90] -- (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '8yt1qcclsou3pax0g1zv3ctsh5t1jr05' AND "django_session"."expire_date" > '2016-09-26 08:08:49.175247'); args=('8yt1qcclsou3pax0g1zv3ctsh5t1jr05', '2016-09-26 08:08:49.175247')
+2016-09-26 16:08:49,178 [DEBUG][Thread-100:140714788771584] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+2016-09-26 16:08:49,210 [DEBUG][Thread-100:140714788771584] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/usr/local/lib/python3.5/dist-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'None': None, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7ffabc3f4ac8>, 'DEFAULT_MESSAGE_LEVELS': {'ERROR': 40, 'DEBUG': 10, 'SUCCESS': 25, 'WARNING': 30, 'INFO': 20}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7ffabc3f95c0>, 'request': <WSGIRequest: GET '/admin/'>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7ffabc67e400>>}, {}, {'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8ced30>, 'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8cec88>, 'available_apps': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f96a0>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9da0>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'has_permission': True, 'app_list': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9b70>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9668>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'LANGUAGE_BIDI': False, 'site_url': '/', 'LANGUAGE_CODE': 'zh-hans', 'title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd85af28>}]"
+2016-09-26 16:08:49,211 [DEBUG][Thread-100:140714788771584] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/usr/local/lib/python3.5/dist-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'None': None, 'False': False}, {'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7ffabc3f4ac8>, 'DEFAULT_MESSAGE_LEVELS': {'ERROR': 40, 'DEBUG': 10, 'SUCCESS': 25, 'WARNING': 30, 'INFO': 20}, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7ffabc3f95c0>, 'request': <WSGIRequest: GET '/admin/'>, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7ffabc67e400>>}, {}, {'site_header': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8ced30>, 'site_title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd8cec88>, 'available_apps': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f96a0>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9da0>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'has_permission': True, 'app_list': [{'has_module_perms': True, 'app_label': 'vote', 'app_url': '/admin/vote/', 'models': [{'object_name': 'Candidate', 'add_url': '/admin/vote/candidate/add/', 'admin_url': '/admin/vote/candidate/', 'name': '候选人信息', 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': 'Vote'}, {'has_module_perms': True, 'app_label': 'auth', 'app_url': '/admin/auth/', 'models': [{'object_name': 'User', 'add_url': '/admin/auth/user/add/', 'admin_url': '/admin/auth/user/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9b70>, 'perms': {'add': True, 'delete': True, 'change': True}}, {'object_name': 'Group', 'add_url': '/admin/auth/group/add/', 'admin_url': '/admin/auth/group/', 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabc3f9668>, 'perms': {'add': True, 'delete': True, 'change': True}}], 'name': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd942be0>}], 'LANGUAGE_BIDI': False, 'site_url': '/', 'LANGUAGE_CODE': 'zh-hans', 'title': <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7ffabd85af28>}]"
+2016-09-26 16:08:49,218 [DEBUG][Thread-100:140714788771584] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+2016-09-26 16:08:49,225 [INFO][Thread-100:140714788771584] [basehttp.log_message django.server:131] -- "GET /admin/ HTTP/1.1" 200 6446
+2016-09-26 16:49:23,579 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '8yt1qcclsou3pax0g1zv3ctsh5t1jr05' AND "django_session"."expire_date" > '2016-09-26 08:49:23.577732'); args=('8yt1qcclsou3pax0g1zv3ctsh5t1jr05', '2016-09-26 08:49:23.577732')
+2016-09-26 16:49:23,580 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+2016-09-26 16:49:23,582 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT COUNT(*) AS "__count" FROM "vote_candidate"; args=()
+2016-09-26 16:49:23,582 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT COUNT(*) AS "__count" FROM "vote_candidate"; args=()
+2016-09-26 16:49:23,585 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" ASC, "vote_candidate"."id" DESC; args=()
+2016-09-26 16:49:23,600 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [errors] in 'None'
+2016-09-26 16:49:23,603 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'show' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+  File "/usr/local/lib/python3.5/dist-packages/django/template/context.py", line 75, in __getitem__
+    raise KeyError(key)
+KeyError: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 891, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [show] in "[{'True': True, 'None': None, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7ffabc625f28>>, 'False': False}]"
+2016-09-26 16:49:23,605 [DEBUG][Thread-106:140714805556992] [utils.execute django.db.backends:90] -- (0.000) SELECT DISTINCT "vote_candidate"."name" FROM "vote_candidate" ORDER BY "vote_candidate"."name" ASC; args=()
+2016-09-26 16:49:23,607 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'is_multipart' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_multipart] in 'None'
+2016-09-26 16:49:23,617 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'non_field_errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_errors] in 'None'
+2016-09-26 16:49:23,617 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'non_field_errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_errors] in 'None'
+2016-09-26 16:49:23,618 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'non_field_errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_errors] in 'None'
+2016-09-26 16:49:23,618 [DEBUG][Thread-106:140714805556992] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'non_field_errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_errors] in 'None'
+2016-09-26 16:49:23,622 [INFO][Thread-106:140714805556992] [basehttp.log_message django.server:131] -- "GET /admin/vote/candidate/ HTTP/1.1" 200 6919
+2016-09-26 16:49:24,015 [DEBUG][Thread-107:140714780378880] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '8yt1qcclsou3pax0g1zv3ctsh5t1jr05' AND "django_session"."expire_date" > '2016-09-26 08:49:24.014097'); args=('8yt1qcclsou3pax0g1zv3ctsh5t1jr05', '2016-09-26 08:49:24.014097')
+2016-09-26 16:49:24,026 [DEBUG][Thread-107:140714780378880] [utils.execute django.db.backends:90] -- (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+2016-09-26 16:49:24,049 [INFO][Thread-107:140714780378880] [basehttp.log_message django.server:131] -- "GET /admin/jsi18n/ HTTP/1.1" 200 7415
+2016-09-26 17:06:26,888 [DEBUG][Dummy-1:139825735993088] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:26,890 [DEBUG][Dummy-1:139825735993088] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-26 17:06:31,075 [DEBUG][MainThread:140188334876416] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:31,077 [DEBUG][MainThread:140188334876416] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-26 17:06:47,939 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:47,941 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-26 17:06:47,942 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:47,943 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-26 17:06:47,958 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) PRAGMA foreign_keys; args=None
+2016-09-26 17:06:47,959 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) PRAGMA foreign_keys = 0; args=None
+2016-09-26 17:06:47,959 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-26 17:06:47,961 [DEBUG][MainThread:140331354715904] [schema.execute django.db.backends.schema:103] -- CREATE TABLE "vote_voteaction" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "openid" varchar(64) NOT NULL, "voteid" integer NOT NULL, "votetime" varchar(8) NOT NULL); (params None)
+2016-09-26 17:06:47,961 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) CREATE TABLE "vote_voteaction" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "openid" varchar(64) NOT NULL, "voteid" integer NOT NULL, "votetime" varchar(8) NOT NULL); args=None
+2016-09-26 17:06:47,976 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) PRAGMA foreign_keys = 0; args=None
+2016-09-26 17:06:47,977 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:47,978 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-26 17:06:47,979 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('vote', '0003_auto_20160926_1706', '2016-09-26 09:06:47.977891'); args=['vote', '0003_auto_20160926_1706', '2016-09-26 09:06:47.977891']
+2016-09-26 17:06:48,001 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-26 17:06:48,002 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-26 17:06:48,004 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'logentry' AND "django_content_type"."app_label" = 'admin'); args=('logentry', 'admin')
+2016-09-26 17:06:48,008 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,)
+2016-09-26 17:06:48,009 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',)
+2016-09-26 17:06:48,011 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'group' AND "django_content_type"."app_label" = 'auth'); args=('group', 'auth')
+2016-09-26 17:06:48,013 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'permission' AND "django_content_type"."app_label" = 'auth'); args=('permission', 'auth')
+2016-09-26 17:06:48,014 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'user' AND "django_content_type"."app_label" = 'auth'); args=('user', 'auth')
+2016-09-26 17:06:48,015 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3, 4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3, 4)
+2016-09-26 17:06:48,016 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',)
+2016-09-26 17:06:48,017 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'contenttype' AND "django_content_type"."app_label" = 'contenttypes'); args=('contenttype', 'contenttypes')
+2016-09-26 17:06:48,018 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,)
+2016-09-26 17:06:48,019 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',)
+2016-09-26 17:06:48,020 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'session' AND "django_content_type"."app_label" = 'sessions'); args=('session', 'sessions')
+2016-09-26 17:06:48,021 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,)
+2016-09-26 17:06:48,022 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',)
+2016-09-26 17:06:48,023 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'voteaction' AND "django_content_type"."app_label" = 'vote'); args=('voteaction', 'vote')
+2016-09-26 17:06:48,024 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'vote' AND "django_content_type"."model" = 'voteaction'); args=('vote', 'voteaction')
+2016-09-26 17:06:48,024 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-26 17:06:48,025 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('vote', 'voteaction'); args=['vote', 'voteaction']
+2016-09-26 17:06:48,037 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'candidate' AND "django_content_type"."app_label" = 'vote'); args=('candidate', 'vote')
+2016-09-26 17:06:48,039 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8, 7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8, 7)
+2016-09-26 17:06:48,039 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-26 17:06:48,040 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add 投票流水表', 8, 'add_voteaction' UNION ALL SELECT 'Can change 投票流水表', 8, 'change_voteaction' UNION ALL SELECT 'Can delete 投票流水表', 8, 'delete_voteaction'; args=('Can add 投票流水表', 8, 'add_voteaction', 'Can change 投票流水表', 8, 'change_voteaction', 'Can delete 投票流水表', 8, 'delete_voteaction')
+2016-09-26 17:06:48,057 [DEBUG][MainThread:140331354715904] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'vote'; args=('vote',)

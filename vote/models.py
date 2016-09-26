@@ -20,7 +20,7 @@ class Candidate(models.Model):
 class VoteAction(models.Model):
     openid = models.CharField(max_length=64, blank=False, verbose_name='微信用户ID')
     voteid = models.IntegerField(blank=False, verbose_name='被投票人ID')
-    votetime = models.DateTimeField(blank=False, verbose_name='投票时间')
+    votetime = models.CharField(max_length=8, blank=False, verbose_name='投票时间, YYYYMMDD')
 
     class Meta:
         verbose_name = '投票流水表'
