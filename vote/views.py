@@ -419,7 +419,7 @@ def do_vote(request, source, voted_id):
 
     try:
         current_date = datetime.datetime.now().strftime('%Y%m%d')
-        VoteAction.objects.get(openid=openid, votetime=current_date)
+        VoteAction.objects.get(openid=openid, votetime=current_date, voteid=voted_id)
     except VoteAction.DoesNotExist:
         real_vote(openid, voted_id)
     except Exception as err:
