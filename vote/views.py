@@ -20,6 +20,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 
+@csrf_exempt
 def authorization(request):
     try:
         code = request.GET.get('code')
@@ -310,6 +311,7 @@ def wechat_get_token(reqfrom='internet'):
     return token
 
 
+@csrf_exempt
 def show_main_list(request):
     openid = get_openid(request)
     if openid == '':
@@ -331,6 +333,7 @@ def show_main_list(request):
         return render_to_response("vote/list.html", {"candidates": {}})
 
 
+@csrf_exempt
 def show_contents(request, main_id):
     openid = get_openid(request)
     if openid == '':
@@ -353,6 +356,7 @@ def show_contents(request, main_id):
         return HttpResponseRedirect('/list/')
 
 
+@csrf_exempt
 def show_charts(request):
     openid = get_openid(request)
     if openid == '':
@@ -412,6 +416,7 @@ def real_vote(openid, voted_id):
         logger.error("err = {}".format(err))
 
 
+@csrf_exempt
 def do_vote(request, source, voted_id):
     openid = get_openid(request)
     if openid == '':
@@ -420,17 +425,23 @@ def do_vote(request, source, voted_id):
     try:
         current_date = datetime.datetime.now().strftime('%Y%m%d')
         VoteAction.objects.get(openid=openid, votetime=current_date, voteid=voted_id)
+
+        candidate = {
+            "resp": "你今天已经为他投过票了，请明天继续！"
+        }
+        return render_to_response('vote/voteinfo.html', {"candidate": candidate})
     except VoteAction.DoesNotExist:
         real_vote(openid, voted_id)
+
+        candidate = {
+            "resp": "感谢你宝贵的一票！"
+        }
+        return render_to_response('vote/voteinfo.html', {"candidate": candidate})
     except Exception as err:
         logger.error("err = {}".format(err))
 
-    if source == "list":
-        return HttpResponseRedirect('/list/')
-    else:
-        return HttpResponseRedirect('/content/' + str(voted_id) + '/')
 
-
+@csrf_exempt
 def show_follow_helper(request):
     try:
         main_candidate = FollowInfo.objects.get(id=1)

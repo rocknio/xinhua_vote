@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'^content/(\d)/$', show_contents),
     url(r'^list/', show_main_list),
     url(r'^charts/', show_charts),
-    url(r'^do_vote/(\w+)/(\d)/$', do_vote),
+    url(r'^do_vote/(\w+)/(\d+)/$', do_vote),
     url(r'^wechat/', wechat_check),
     url(r'^authorization/', authorization),
-    url(r'^follow_helper', show_follow_helper)
+    url(r'^follow_helper/', show_follow_helper)
 ]
