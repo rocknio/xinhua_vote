@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from vote.models import Candidate, WechatConfig, WechatInfo, FollowInfo
+from vote.models import Candidate, WechatConfig, WechatInfo, FollowInfo, VoteAction
 from django.db.models import Sum, F
 from django.views.decorators.csrf import csrf_exempt
 from xinhua_vote.settings import WECHAT_VOTE_TOKEN, WECHAT_GET_USER_INFO_URL, WECHAT_TOKEN_URL, \
@@ -19,8 +19,6 @@ import requests
 # 获取的logger
 logger = logging.getLogger(__name__)
 
-# https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3a998e063f25c7c5&redirect_uri=http%3a%2f%2frocknio.gnway.cc%2fauthorization%2f&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect
-
 
 def authorization(request):
     try:
@@ -33,6 +31,7 @@ def authorization(request):
 
         ret = get_user_info(openid)
         if ret == 'ok':
+            request.session['openid'] = openid
             return HttpResponseRedirect('/list/')
         else:
             return HttpResponseRedirect('/follow_helper/')
@@ -312,6 +311,10 @@ def wechat_get_token(reqfrom='internet'):
 
 
 def show_main_list(request):
+    openid = get_openid(request)
+    if openid == '':
+        return notify_entry()
+
     try:
         candidate_objects = Candidate.objects.all().order_by('-voted')
         candidates = []
@@ -329,6 +332,10 @@ def show_main_list(request):
 
 
 def show_contents(request, main_id):
+    openid = get_openid(request)
+    if openid == '':
+        return notify_entry()
+
     try:
         main_candidate = Candidate.objects.get(id=main_id)
         candidate = {
@@ -347,6 +354,10 @@ def show_contents(request, main_id):
 
 
 def show_charts(request):
+    openid = get_openid(request)
+    if openid == '':
+        return notify_entry()
+
     try:
         all_vote = Candidate.objects.aggregate(Sum('voted'))
 
@@ -375,9 +386,42 @@ def show_charts(request):
         return HttpResponseRedirect('/list/')
 
 
-def do_vote(request, source, voted_id):
+def get_openid(request):
+    try:
+        openid = request.session['openid']
+        return openid
+    except Exception:
+        return ''
+
+
+def notify_entry():
+    return render_to_response('vote/entryinfo.html')
+
+
+def real_vote(openid, voted_id):
     try:
         Candidate.objects.filter(id=voted_id).update(voted=F('voted') + 1)
+
+        vote_action = VoteAction()
+        vote_action.openid = openid
+        vote_action.voteid = voted_id
+        vote_action.votetime = datetime.datetime.now().strftime('%Y%m%d')
+
+        vote_action.save()
+    except Exception as err:
+        logger.error("err = {}".format(err))
+
+
+def do_vote(request, source, voted_id):
+    openid = get_openid(request)
+    if openid == '':
+        return notify_entry()
+
+    try:
+        current_date = datetime.datetime.now().strftime('%Y%m%d')
+        VoteAction.objects.get(openid=openid, votetime=current_date)
+    except VoteAction.DoesNotExist:
+        real_vote(openid, voted_id)
     except Exception as err:
         logger.error("err = {}".format(err))
 

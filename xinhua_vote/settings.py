@@ -139,6 +139,9 @@ WECHAT_TOKEN_URL = r'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_c
 # 获取openid的回调地址
 REDIRECT_URL = "http://rocknio.gnway.cc/authorization/"
 
+# 入口URL
+ENTRY_URL = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3a998e063f25c7c5&redirect_uri=http%3a%2f%2frocknio.gnway.cc%2fauthorization%2f&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"
+
 
 LOGGING = {
     'version': 1,

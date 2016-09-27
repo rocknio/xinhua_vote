@@ -16,11 +16,21 @@ admin.site.register(Candidate, CandidateAdmin)
 
 
 class FollowInfoAdmin(admin.ModelAdmin):
+    actions = None
+
     list_display = ('name', 'description', 'pic_name', 'voted')
     list_filter = ('name',)
     ordering = ('voted',)
     search_fields = ('name',)
     fields = ('name', 'description', 'pic_name')
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    readonly_fields = ('name', 'description', 'pic_name', 'voted')
 
 admin.site.register(FollowInfo, FollowInfoAdmin)
 
