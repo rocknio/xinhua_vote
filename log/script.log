@@ -358,3 +358,4 @@ Traceback (most recent call last):
     return Database.Cursor.execute(self, query, params)
 django.db.utils.OperationalError: no such table: vote_followinfo
 2016-09-27 15:10:40,365 [WARNING][Thread-2:139922136958720] [base.get_response django.request:152] -- Not Found: /http:/zc.qq.com/cgi-bin/common/attr
+2016-09-27 15:34:01,575 [WARNING][Thread-200:139734873532160] [base.get_response django.request:152] -- Not Found: /
