@@ -1,7 +1,4 @@
-
-
-
-body{background: url(/static/images/icon_bg.jpg) center top no-repeat; font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;}
+body{background: url(/static/images/icon_bg.jpg) center top no-repeat; background-size: contain; font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;}
 
 .main{margin-top: 8em; }
 .main > img{margin-right: 4.6em; max-width:370px; width:100%;}
@@ -44,11 +41,11 @@ body{background: url(/static/images/icon_bg.jpg) center top no-repeat; font-fami
 .progress-color3{background: #26a0dd;}
 .progress-color4{background: #c579db;}
 
-.table-list img{margin-right: 30px; width:72px; height: 72px;}
+.table-list img{margin-right: 30px; width: 72px; height: 72px;}
 .table-item{overflow: hidden;}
 .table-item > h4{font-size: 16px; margin-top: 14px;}
 
-.footer{width: 100%; background: url(/static/images/icon_footer.png) center top no-repeat; height: 625px;}
+.footer{width: 100%; background: url(/static/images/icon_footer.png) center top no-repeat; background-size: cover; height: 625px;}
 
 
 /* content
@@ -122,7 +119,19 @@ body{background: url(/static/images/icon_bg.jpg) center top no-repeat; font-fami
 	}
 }
 
-
+@media screen and (max-width:768px ) {
+	.header{margin-top: 1em;}
+	.header img{width: 100%;}
+	.vote-body{width: 100%;}
+	.main{margin-top: 2em;}
+	.main > img{margin-bottom: 1.5em;}
+	.footer{height: 200px;}
+	.vote-item2{text-align: center;}
+	.vote-item2 button, .list-item button{width: 100%;}
+	.vote-item2 span{display: inline-block; margin-top: 10px;}
+	
+	.progress-box + span{display: inline-block;}
+}
 
 
 

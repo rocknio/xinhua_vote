@@ -11965,3 +11965,238 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_erro
 2016-09-26 22:43:11,830 [DEBUG][Thread-9:5196] [utils.execute django.db.backends:90] -- (0.001) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
 2016-09-26 22:43:11,836 [DEBUG][Thread-9:5196] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
 2016-09-26 22:43:11,874 [INFO][Thread-9:5196] [basehttp.log_message django.server:131] -- "GET /charts/ HTTP/1.1" 200 4353
+2016-09-27 09:09:21,848 [DEBUG][Dummy-1:140047940163328] [utils.execute django.db.backends:90] -- (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-27 09:09:21,851 [DEBUG][Dummy-1:140047940163328] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-27 09:09:50,145 [DEBUG][Thread-2:140047928551168] [utils.execute django.db.backends:90] -- (0.001) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate"; args=()
+2016-09-27 09:09:50,153 [INFO][Thread-2:140047928551168] [basehttp.log_message django.server:131] -- "GET /list/ HTTP/1.1" 200 3086
+2016-09-27 09:09:50,242 [INFO][Thread-4:140047928551168] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 200 4013
+2016-09-27 09:09:50,259 [INFO][Thread-6:140047900923648] [basehttp.log_message django.server:131] -- "GET /static/js/bootstrap.min.js HTTP/1.1" 200 37045
+2016-09-27 09:09:50,260 [INFO][Thread-7:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 200 64464
+2016-09-27 09:09:50,306 [INFO][Thread-5:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/js/jquery-1.11.3.min.js HTTP/1.1" 200 95957
+2016-09-27 09:09:50,355 [INFO][Thread-3:140047920158464] [basehttp.log_message django.server:131] -- "GET /static/css/bootstrap.min.css/ HTTP/1.1" 200 123366
+2016-09-27 09:09:50,360 [INFO][Thread-8:140047920158464] [basehttp.log_message django.server:131] -- "GET /static/js/addRippleEffect.js HTTP/1.1" 200 1012
+2016-09-27 09:09:50,387 [INFO][Thread-9:140047920158464] [basehttp.log_message django.server:131] -- "GET /static/js/jquery.zoomImgRollover.js HTTP/1.1" 200 1679
+2016-09-27 09:09:50,416 [INFO][Thread-10:140047920158464] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/zhangsan.jpg/ HTTP/1.1" 200 7686
+2016-09-27 09:09:50,417 [INFO][Thread-11:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/lisi.jpg/ HTTP/1.1" 200 5176
+2016-09-27 09:09:50,418 [INFO][Thread-12:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/wangmazi.jpg/ HTTP/1.1" 200 6504
+2016-09-27 09:09:50,737 [INFO][Thread-13:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/images/icon_bg.jpg HTTP/1.1" 200 140258
+2016-09-27 09:09:51,191 [INFO][Thread-14:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/images/icon_footer.png HTTP/1.1" 200 965716
+2016-09-27 09:09:51,406 [DEBUG][Thread-15:140047909316352] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>], [<RegexURLPattern None ^content/(\d)/$>], [<RegexURLPattern None ^list/>], [<RegexURLPattern None ^charts/>], [<RegexURLPattern None ^do_vote/(\w+)/(\d)/$>], [<RegexURLPattern None ^wechat/>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+2016-09-27 09:09:51,415 [WARNING][Thread-15:140047909316352] [basehttp.log_message django.server:131] -- "GET /favicon.ico HTTP/1.1" 404 2501
+2016-09-27 09:09:57,297 [DEBUG][Thread-16:140047909316352] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-27 09:09:57,298 [DEBUG][Thread-16:140047909316352] [utils.execute django.db.backends:90] -- (0.000) UPDATE "vote_candidate" SET "voted" = ("vote_candidate"."voted" + 1) WHERE "vote_candidate"."id" = 4; args=(1, 4)
+2016-09-27 09:09:57,312 [INFO][Thread-16:140047909316352] [basehttp.log_message django.server:131] -- "GET /do_vote/list/4/ HTTP/1.1" 302 0
+2016-09-27 09:09:57,705 [DEBUG][Thread-17:140047892530944] [utils.execute django.db.backends:90] -- (0.001) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate"; args=()
+2016-09-27 09:09:57,708 [INFO][Thread-17:140047892530944] [basehttp.log_message django.server:131] -- "GET /list/ HTTP/1.1" 200 3086
+2016-09-27 09:09:57,795 [INFO][Thread-18:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:09:57,798 [INFO][Thread-19:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 304 0
+2016-09-27 09:10:01,900 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT SUM("vote_candidate"."voted") AS "voted__sum" FROM "vote_candidate"; args=()
+2016-09-27 09:10:01,901 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:01,902 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:01,904 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:01,904 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:01,905 [DEBUG][Thread-20:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:01,910 [INFO][Thread-20:140047909316352] [basehttp.log_message django.server:131] -- "GET /charts/ HTTP/1.1" 200 4353
+2016-09-27 09:10:02,006 [INFO][Thread-21:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/wangmazi.jpg HTTP/1.1" 200 6504
+2016-09-27 09:10:02,008 [INFO][Thread-22:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:10:02,036 [INFO][Thread-23:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/lisi.jpg HTTP/1.1" 200 5176
+2016-09-27 09:10:02,038 [INFO][Thread-24:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/zhangsan.jpg HTTP/1.1" 200 7686
+2016-09-27 09:10:08,870 [DEBUG][Thread-25:140047892530944] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" WHERE "vote_candidate"."id" = 3; args=(3,)
+2016-09-27 09:10:08,872 [DEBUG][Thread-25:140047892530944] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:08,880 [INFO][Thread-25:140047892530944] [basehttp.log_message django.server:131] -- "GET /content/3/ HTTP/1.1" 200 1709
+2016-09-27 09:10:09,012 [INFO][Thread-26:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:10:09,017 [INFO][Thread-27:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 304 0
+2016-09-27 09:10:15,504 [DEBUG][Thread-28:140047909316352] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-27 09:10:15,506 [DEBUG][Thread-28:140047909316352] [utils.execute django.db.backends:90] -- (0.001) UPDATE "vote_candidate" SET "voted" = ("vote_candidate"."voted" + 1) WHERE "vote_candidate"."id" = 3; args=(1, 3)
+2016-09-27 09:10:15,520 [INFO][Thread-28:140047909316352] [basehttp.log_message django.server:131] -- "GET /do_vote/content/3/ HTTP/1.1" 302 0
+2016-09-27 09:10:15,553 [DEBUG][Thread-29:140047892530944] [utils.execute django.db.backends:90] -- (0.001) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" WHERE "vote_candidate"."id" = 3; args=(3,)
+2016-09-27 09:10:15,553 [DEBUG][Thread-29:140047892530944] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:15,556 [INFO][Thread-29:140047892530944] [basehttp.log_message django.server:131] -- "GET /content/3/ HTTP/1.1" 200 1709
+2016-09-27 09:10:15,649 [INFO][Thread-30:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:10:30,700 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT SUM("vote_candidate"."voted") AS "voted__sum" FROM "vote_candidate"; args=()
+2016-09-27 09:10:30,701 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:30,702 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:30,703 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:30,703 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:30,704 [DEBUG][Thread-31:140047909316352] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:10:30,707 [INFO][Thread-31:140047909316352] [basehttp.log_message django.server:131] -- "GET /charts/ HTTP/1.1" 200 4353
+2016-09-27 09:10:30,840 [INFO][Thread-32:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:10:30,843 [INFO][Thread-33:140047892530944] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 304 0
+2016-09-27 09:10:48,744 [DEBUG][Thread-34:140047892530944] [utils.execute django.db.backends:90] -- (0.001) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate"; args=()
+2016-09-27 09:10:48,747 [INFO][Thread-34:140047892530944] [basehttp.log_message django.server:131] -- "GET /list/ HTTP/1.1" 200 3086
+2016-09-27 09:10:48,819 [INFO][Thread-35:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:10:48,823 [INFO][Thread-36:140047909316352] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 304 0
+2016-09-27 09:10:49,563 [DEBUG][Thread-37:140047909316352] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>], [<RegexURLPattern None ^content/(\d)/$>], [<RegexURLPattern None ^list/>], [<RegexURLPattern None ^charts/>], [<RegexURLPattern None ^do_vote/(\w+)/(\d)/$>], [<RegexURLPattern None ^wechat/>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+2016-09-27 09:10:49,564 [WARNING][Thread-37:140047909316352] [basehttp.log_message django.server:131] -- "GET /favicon.ico HTTP/1.1" 404 2501
+2016-09-27 09:10:49,577 [DEBUG][Thread-38:140047909316352] [base._resolve_lookup django.template:929] -- Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 39, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 172, in _get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/urls/resolvers.py", line 300, in resolve
+    raise Resolver404({'tried': tried, 'path': new_path})
+django.urls.exceptions.Resolver404: {'tried': [[<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>], [<RegexURLPattern None ^content/(\d)/$>], [<RegexURLPattern None ^list/>], [<RegexURLPattern None ^charts/>], [<RegexURLPattern None ^do_vote/(\w+)/(\d)/$>], [<RegexURLPattern None ^wechat/>]], 'path': 'favicon.ico'}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 885, in _resolve_lookup
+    current = current[bit]
+TypeError: 'RegexURLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'RegexURLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 900, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/template/base.py", line 907, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in '<RegexURLResolver <RegexURLPattern list> (admin:admin) ^admin/>'
+2016-09-27 09:10:49,578 [WARNING][Thread-38:140047909316352] [basehttp.log_message django.server:131] -- "GET /favicon.ico HTTP/1.1" 404 2501
+2016-09-27 09:21:57,203 [DEBUG][Dummy-1:140186372712192] [utils.execute django.db.backends:90] -- (0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+2016-09-27 09:21:57,205 [DEBUG][Dummy-1:140186372712192] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+2016-09-27 09:22:24,499 [DEBUG][Thread-2:140186361100032] [utils.execute django.db.backends:90] -- (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:24.497587'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:24.497587')
+2016-09-27 09:22:24,501 [DEBUG][Thread-2:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate"; args=()
+2016-09-27 09:22:24,511 [INFO][Thread-2:140186361100032] [basehttp.log_message django.server:131] -- "GET /list/ HTTP/1.1" 200 3086
+2016-09-27 09:22:24,838 [INFO][Thread-3:140186352707328] [basehttp.log_message django.server:131] -- "GET /static/css/bootstrap.min.css/ HTTP/1.1" 200 123366
+2016-09-27 09:22:24,842 [INFO][Thread-5:140186341865216] [basehttp.log_message django.server:131] -- "GET /static/js/jquery-1.11.3.min.js HTTP/1.1" 200 95957
+2016-09-27 09:22:24,842 [INFO][Thread-4:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 200 4013
+2016-09-27 09:22:24,848 [INFO][Thread-6:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/js/bootstrap.min.js HTTP/1.1" 200 37045
+2016-09-27 09:22:24,864 [INFO][Thread-7:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/js/addRippleEffect.js HTTP/1.1" 200 1012
+2016-09-27 09:22:24,878 [INFO][Thread-8:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/js/jquery.zoomImgRollover.js HTTP/1.1" 200 1679
+2016-09-27 09:22:24,892 [INFO][Thread-9:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 200 64464
+2016-09-27 09:22:24,903 [INFO][Thread-10:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/zhangsan.jpg/ HTTP/1.1" 200 7686
+2016-09-27 09:22:24,914 [INFO][Thread-11:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/lisi.jpg/ HTTP/1.1" 200 5176
+2016-09-27 09:22:24,926 [INFO][Thread-12:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/wangmazi.jpg/ HTTP/1.1" 200 6504
+2016-09-27 09:22:25,035 [INFO][Thread-13:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/images/icon_bg.jpg HTTP/1.1" 200 140258
+2016-09-27 09:22:25,043 [INFO][Thread-14:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/images/icon_footer.png HTTP/1.1" 200 965716
+2016-09-27 09:22:25,436 [DEBUG][Thread-15:140186361100032] [utils.execute django.db.backends:90] -- (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:25.433812'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:25.433812')
+2016-09-27 09:22:25,437 [INFO][Thread-15:140186361100032] [basehttp.log_message django.server:131] -- "GET /favicon.ico HTTP/1.1" 301 0
+2016-09-27 09:22:25,455 [INFO][Thread-16:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/favicon.ico HTTP/1.1" 200 1406
+2016-09-27 09:22:42,636 [DEBUG][Thread-17:140186361100032] [utils.execute django.db.backends:90] -- (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:42.634279'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:42.634279')
+2016-09-27 09:22:42,645 [DEBUG][Thread-17:140186361100032] [utils.execute django.db.backends:90] -- (0.007) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" WHERE "vote_candidate"."id" = 1; args=(1,)
+2016-09-27 09:22:42,646 [DEBUG][Thread-17:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:42,652 [INFO][Thread-17:140186361100032] [basehttp.log_message django.server:131] -- "GET /content/1/ HTTP/1.1" 200 1727
+2016-09-27 09:22:48,280 [DEBUG][Thread-18:140186341865216] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:48.278912'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:48.278912')
+2016-09-27 09:22:48,281 [DEBUG][Thread-18:140186341865216] [utils.execute django.db.backends:90] -- (0.000) BEGIN; args=None
+2016-09-27 09:22:48,281 [DEBUG][Thread-18:140186341865216] [utils.execute django.db.backends:90] -- (0.000) UPDATE "vote_candidate" SET "voted" = ("vote_candidate"."voted" + 1) WHERE "vote_candidate"."id" = 1; args=(1, 1)
+2016-09-27 09:22:48,294 [INFO][Thread-18:140186341865216] [basehttp.log_message django.server:131] -- "GET /do_vote/content/1/ HTTP/1.1" 302 0
+2016-09-27 09:22:48,310 [DEBUG][Thread-19:140186352707328] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:48.309148'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:48.309148')
+2016-09-27 09:22:48,311 [DEBUG][Thread-19:140186352707328] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" WHERE "vote_candidate"."id" = 1; args=(1,)
+2016-09-27 09:22:48,312 [DEBUG][Thread-19:140186352707328] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:48,314 [INFO][Thread-19:140186352707328] [basehttp.log_message django.server:131] -- "GET /content/1/ HTTP/1.1" 200 1727
+2016-09-27 09:22:54,030 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'bqyn5d3die3ccoggj2mpd6i2kcvbisua' AND "django_session"."expire_date" > '2016-09-27 01:22:54.029455'); args=('bqyn5d3die3ccoggj2mpd6i2kcvbisua', '2016-09-27 01:22:54.029455')
+2016-09-27 09:22:54,031 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT SUM("vote_candidate"."voted") AS "voted__sum" FROM "vote_candidate"; args=()
+2016-09-27 09:22:54,032 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:54,032 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:54,033 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:54,033 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:54,034 [DEBUG][Thread-23:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:22:54,038 [INFO][Thread-23:140186361100032] [basehttp.log_message django.server:131] -- "GET /charts/ HTTP/1.1" 200 4353
+2016-09-27 09:22:54,227 [INFO][Thread-24:140185987708672] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/wangmazi.jpg HTTP/1.1" 200 6504
+2016-09-27 09:22:54,239 [INFO][Thread-25:140185979315968] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/lisi.jpg HTTP/1.1" 200 5176
+2016-09-27 09:22:54,262 [INFO][Thread-26:140185979315968] [basehttp.log_message django.server:131] -- "GET /static/candidate_img/zhangsan.jpg HTTP/1.1" 200 7686
+2016-09-27 09:26:02,156 [DEBUG][Thread-31:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate"; args=()
+2016-09-27 09:26:02,159 [INFO][Thread-31:140186361100032] [basehttp.log_message django.server:131] -- "GET /list/ HTTP/1.1" 200 3086
+2016-09-27 09:26:02,270 [INFO][Thread-32:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/css/style.css/ HTTP/1.1" 304 0
+2016-09-27 09:26:02,288 [INFO][Thread-33:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/images/icon_title.png/ HTTP/1.1" 304 0
+2016-09-27 09:26:02,856 [INFO][Thread-34:140186361100032] [basehttp.log_message django.server:131] -- "GET /favicon.ico HTTP/1.1" 301 0
+2016-09-27 09:26:02,865 [INFO][Thread-35:140186361100032] [basehttp.log_message django.server:131] -- "GET /static/favicon.ico HTTP/1.1" 200 1406
+2016-09-27 09:26:12,265 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT SUM("vote_candidate"."voted") AS "voted__sum" FROM "vote_candidate"; args=()
+2016-09-27 09:26:12,266 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:26:12,266 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:26:12,267 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:26:12,268 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:26:12,269 [DEBUG][Thread-36:140186361100032] [utils.execute django.db.backends:90] -- (0.000) SELECT "vote_candidate"."id", "vote_candidate"."name", "vote_candidate"."description", "vote_candidate"."pic_name", "vote_candidate"."voted" FROM "vote_candidate" ORDER BY "vote_candidate"."voted" DESC; args=()
+2016-09-27 09:26:12,272 [INFO][Thread-36:140186361100032] [basehttp.log_message django.server:131] -- "GET /charts/ HTTP/1.1" 200 4353

@@ -657,3 +657,6 @@ Traceback (most recent call last):
   File "C:\Users\SYN\AppData\Local\Programs\Python\Python35\lib\site-packages\django\db\backends\sqlite3\base.py", line 337, in execute
     return Database.Cursor.execute(self, query, params)
 django.db.utils.OperationalError: no such table: vote_candidate
+2016-09-27 09:09:51,413 [WARNING][Thread-15:140047909316352] [base.get_response django.request:152] -- Not Found: /favicon.ico
+2016-09-27 09:10:49,564 [WARNING][Thread-37:140047909316352] [base.get_response django.request:152] -- Not Found: /favicon.ico
+2016-09-27 09:10:49,578 [WARNING][Thread-38:140047909316352] [base.get_response django.request:152] -- Not Found: /favicon.ico
