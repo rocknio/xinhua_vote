@@ -15,18 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from vote.views import show_main_list, show_contents, show_charts, do_vote, wechat_check
-from django.views.generic.base import RedirectView
+from vote.views import show_main_list, show_contents, show_charts, do_vote, wechat_check, authorization, show_follow_helper
+# from django.views.generic.base import RedirectView
 
-favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
+# favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
-    url(r'^favicon\.ico$', favicon_view),
+    # url(r'^favicon\.ico$', favicon_view),
 
     url(r'^admin/', admin.site.urls),
     url(r'^content/(\d)/$', show_contents),
     url(r'^list/', show_main_list),
     url(r'^charts/', show_charts),
     url(r'^do_vote/(\w+)/(\d)/$', do_vote),
-    url(r'^wechat/', wechat_check)
+    url(r'^wechat/', wechat_check),
+    url(r'^authorization/', authorization),
+    url(r'^follow_helper', show_follow_helper)
 ]

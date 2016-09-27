@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from vote.models import Candidate, VoteAction
+from vote.models import Candidate, VoteAction, FollowInfo
 
 
 class CandidateAdmin(admin.ModelAdmin):
@@ -13,6 +13,16 @@ class CandidateAdmin(admin.ModelAdmin):
     fields = ('name', 'description', 'pic_name')
 
 admin.site.register(Candidate, CandidateAdmin)
+
+
+class FollowInfoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'pic_name', 'voted')
+    list_filter = ('name',)
+    ordering = ('voted',)
+    search_fields = ('name',)
+    fields = ('name', 'description', 'pic_name')
+
+admin.site.register(FollowInfo, FollowInfoAdmin)
 
 
 class VoteActionAdmin(admin.ModelAdmin):

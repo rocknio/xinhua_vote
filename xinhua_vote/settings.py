@@ -128,8 +128,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/vote"),
 ]
 
-WECHAT_VOTE_OPENID = 'gh_5363e9f32c9c'
+WECHAT_VOTE_OPENID = 'gh_e249490a070d'
 WECHAT_VOTE_TOKEN = 'xinhua_vote'
+WECHAT_APP_ID = 'wx3a998e063f25c7c5'
+WECHAT_APP_SECRET = 'bd9eff8c8e22d60eaa9ccef3ba8ee284'
+EncodingAESKey = 'ie8JNNIIsbPqkr1Rx0QehwPY4beiPWv26KmO1kapIJa'
+WECHAT_GET_USER_INFO_URL = r'https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=zh_CN'
+WECHAT_TOKEN_URL = r'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&' \
+                   'appid=wx3a998e063f25c7c5&secret=bd9eff8c8e22d60eaa9ccef3ba8ee284'
+# 获取openid的回调地址
+REDIRECT_URL = "http://rocknio.gnway.cc/authorization/"
+
 
 LOGGING = {
     'version': 1,
