@@ -26,6 +26,8 @@ SECRET_KEY = 'h0xz68h^epk3qy2e33&eno6)x+imrf9&i0z$&v=(x!(wojc74u'
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # Application definition
