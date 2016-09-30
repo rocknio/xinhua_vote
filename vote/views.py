@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from vote.models import Candidate, WechatConfig, FollowInfo, VoteAction
-from django.db.models import Sum, F
+from django.db.models import F
 from django.views.decorators.csrf import csrf_exempt
 from xinhua_vote.settings import WECHAT_VOTE_TOKEN, WECHAT_GET_USER_INFO_URL, WECHAT_TOKEN_URL, \
     WECHAT_APP_ID, WECHAT_APP_SECRET
