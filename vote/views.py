@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from vote.models import Candidate, WechatConfig, WechatInfo, FollowInfo, VoteAction
+from vote.models import Candidate, WechatConfig, FollowInfo, VoteAction
 from django.db.models import Sum, F
 from django.views.decorators.csrf import csrf_exempt
 from xinhua_vote.settings import WECHAT_VOTE_TOKEN, WECHAT_GET_USER_INFO_URL, WECHAT_TOKEN_URL, \
@@ -24,11 +24,19 @@ logger = logging.getLogger(__name__)
 def authorization(request):
     try:
         code = request.GET.get('code')
+        logger.info("Code = {}".format(code))
         access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid={}&secret={}&code={}&grant_type=authorization_code".format(WECHAT_APP_ID, WECHAT_APP_SECRET, code)
+        logger.info("AccesstokenUrl = {}".format(access_token_url))
         resp = requests.get(access_token_url)
         resp_text = resp.text
         resp_dict = json.loads(resp_text)
-        openid = resp_dict['openid']
+        logger.info("authorization = {}".format(resp_dict))
+        openid = resp_dict.get('openid', '')
+        access_token = resp_dict.get('access_token', '')
+        logger.info("Openid = {}, access_token = {}".format(openid, access_token))
+        if openid == '' or access_token == '':
+            notify_entry()
+            return
 
         ret = get_user_info(openid)
         if ret == 'ok':
@@ -115,73 +123,43 @@ def wechat_check(request):
                 return render_to_response('vote/resp_text.xml', resp)
         # 取消关注
         elif wc_event.text == 'unsubscribe':
-            wechat_unsubscribe(request, xml_doc)
+            wechat_unsubscribe(request)
             logger.debug('unsubscribe resp = OK')
             return HttpResponse('')
 
 
-def get_user_info(openid):
-    # 记录用户数据
+def wechat_userinfo(access_token, openid):
     try:
-        user_record = WechatInfo.objects.get(openid=openid)
-        logger.info("user = {} is already follow!".format(user_record.openid))
-        return 'ok'
-    except WechatInfo.DoesNotExist:
-        pass
-    except WechatInfo.MultipleObjectsReturned:
-        logger.error('has multiple records in WechatInfo! openid = %s' % openid)
-        return ''
+        # 获取用户信息
+        get_wechat_user_info_url = WECHAT_GET_USER_INFO_URL % (access_token, openid)
+        resp = requests.get(get_wechat_user_info_url)
+        logger.info("Userinfo: Openid = {}, access_token = {}, Info = {}".format(openid, access_token, resp.text))
+        return resp.text
+    except Exception:
+        return ""
 
+
+def get_user_info(openid):
     # 获取用户基本信息
     # 先调用内部接口获取accesstoken
-    token = wechat_get_token('internal')
-    logger.info(token)
+    access_token = wechat_get_token('internal')
+    try:
+        resp = wechat_userinfo(access_token, openid)
+    except Exception:
+        resp = ""
 
-    # 获取用户信息
-    get_wechat_user_info_url = WECHAT_GET_USER_INFO_URL % (token, openid)
-    logger.info(get_wechat_user_info_url)
-    resp = requests.get(get_wechat_user_info_url)
-    logger.info(resp.text)
+    decoded = json.loads(resp)
+    logger.info("Userinfo_DICT: Openid = {}, access_token = {}, Info = {}".format(openid, access_token, decoded))
+    if "errcode" in decoded:
+        return ""
 
-    decoded = json.loads(resp.text)
     if 'subscribe' in decoded:
         if decoded['subscribe'] == 0:
             return ''
-
-    user_record = WechatInfo()
-    user_record.openid = openid
-    user_record.subscribe_time = datetime.datetime.now()
-    if user_record:
-        try:
-            if 'nickname' in decoded:
-                user_record.nickname = decoded['nickname']
-            if 'sex' in decoded:
-                user_record.sex = decoded['sex']
-            if 'language' in decoded:
-                user_record.language = decoded['language']
-            if 'city' in decoded:
-                user_record.city = decoded['city']
-            if 'province' in decoded:
-                user_record.province = decoded['province']
-            if 'country' in decoded:
-                user_record.country = decoded['country']
-            if 'headimgurl' in decoded:
-                user_record.headimgurl = decoded['headimgurl']
-            if 'subscribe_time' in decoded:
-                user_record.subscribe_time = datetime.datetime.fromtimestamp(int(decoded['subscribe_time']))
-
-            user_record.gold = 0
-            user_record.diamond = 0
-        except KeyError:
-            logger.error('json decoded user info fail![%s]' % decoded)
-            return ''
-
-        try:
-            user_record.save()
+        else:
             return 'ok'
-        except ValueError:
-            logger.error('save wechat info fail![%s]' % decoded)
-            return ''
+    else:
+        return 'ok'
 
 
 def wechat_subscribe(request, xmldoc):
@@ -194,7 +172,6 @@ def wechat_subscribe(request, xmldoc):
     touser = xmldoc.find('ToUserName')
     fromuser = xmldoc.find('FromUserName')
 
-    get_user_info(fromuser.text)
     http_resp = {'toUser': fromuser.text, 'fromUser': touser.text, 'createTime': str(int(time.time())),
                  'text': str(1),
                  'textContent': "欢迎关注新华小学"}
@@ -202,28 +179,12 @@ def wechat_subscribe(request, xmldoc):
     return http_resp
 
 
-def wechat_unsubscribe(request, xmldoc):
+def wechat_unsubscribe(request):
     """
-
     :param request:
-    :param xmldoc:
     :return:
     """
-    # 将用户数据移到取消关注用户表
-    fromuser = xmldoc.find('FromUserName')
-    try:
-        user_record = WechatInfo.objects.get(openid=fromuser.text)
-    except WechatInfo.DoesNotExist:
-        logger.error('wechatinfo[%s] is not in DB!' % fromuser.text)
-    except WechatInfo.MultipleObjectsReturned:
-        logger.error('wechatinfo[%s] have multiple records in DB' % fromuser.text)
-    else:
-        if user_record:
-            # 删除user_record表里数据，
-            try:
-                user_record.delete()
-            except ValueError:
-                logger.error('delete wechatinfo fail! openid = %s' % user_record.openid)
+    return HttpResponse('OK')
 
 
 def wechat_get_token(reqfrom='internet'):
@@ -274,15 +235,18 @@ def wechat_get_token(reqfrom='internet'):
     resp = requests.get(WECHAT_TOKEN_URL)
 
     # 解析get access token 返回
-    logger.info('Wechat token resp = %s' % resp)
+    logger.info('Wechat token resp = %s' % resp.text)
     decoded = json.loads(resp.text)
+
+    if "errcode" in decoded.keys():
+        return ''
 
     # 保存accesstoken到数据库
     if token_record:
         try:
             token_record.value = decoded['access_token']
             token_record.expire_seconds = decoded['expires_in']
-            token_record.touch_time = curtime
+            token_record.touch_time = datetime.datetime.now()
             token = token_record.value
         except ValueError:
             logger.error('decoded json fail!')
@@ -293,7 +257,7 @@ def wechat_get_token(reqfrom='internet'):
             token_record.value = decoded['access_token']
             token_record.tag = 'token'
             token_record.expire_seconds = decoded['expires_in']
-            token_record.touch_time = curtime
+            token_record.touch_time = datetime.datetime.now()
             token = token_record.value
         except ValueError:
             logger.error('new WechatConfig fail!')
@@ -318,7 +282,7 @@ def show_main_list(request):
         return notify_entry()
 
     try:
-        candidate_objects = Candidate.objects.all().order_by('-voted')
+        candidate_objects = Candidate.objects.all()
         candidates = []
         for one_candidate in candidate_objects:
             candidates.append({

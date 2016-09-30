@@ -24,8 +24,8 @@ SECRET_KEY = 'h0xz68h^epk3qy2e33&eno6)x+imrf9&i0z$&v=(x!(wojc74u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1']
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['127.0.0.1','localhost','yzqxhxx.gnway.cc']
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -117,7 +117,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

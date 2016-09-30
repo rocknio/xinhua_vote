@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^favicon\.ico$', favicon_view),
 
     url(r'^admin/', admin.site.urls),
-    url(r'^content/(\d)/$', show_contents),
+    url(r'^content/(\d+)/$', show_contents),
     url(r'^list/', show_main_list),
     # url(r'^/', show_main_list),
     url(r'^charts/', show_charts),

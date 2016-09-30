@@ -20,7 +20,7 @@
 <script src={% static "js/jquery-1.11.3.min.js" %}></script>
 <!-- 包括所有已编译的插件 -->
 <script src={% static "js/bootstrap.min.js" %}></script>
-<title>请关注</title>
+<title>提示</title>
 </head>
 <body>
 <div class="container">
@@ -28,8 +28,7 @@
 		<img src={% static "images/icon_title.png" %} />
 	</div>
 	<div class="main">
-{#		<img class="pull-left" src={{ candidate.pic_name }} />#}
-        <img class="pull-left" src={{ candidate.pic_name }} />
+		<img class="pull-left" src={{ candidate.pic_name }} />
 		<div class="vote-body">
 			<div class="vote-item1">
 				<b>{{ candidate.name }}</b>

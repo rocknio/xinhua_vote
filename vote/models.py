@@ -37,7 +37,7 @@ class WechatInfo(models.Model):
     country = models.CharField(max_length=32)
     province = models.CharField(max_length=32)
     headimgurl = models.CharField(max_length=512)
-    subscribe_time = models.DateTimeField(default=datetime.datetime.now())
+    subscribe_time = models.DateTimeField()
     custid = models.IntegerField(blank=True, null=True)
 
 
@@ -50,7 +50,7 @@ class WechatInfoUnsub(models.Model):
     country = models.CharField(max_length=32)
     province = models.CharField(max_length=32)
     headimgurl = models.CharField(max_length=512)
-    subscribe_time = models.DateTimeField(default=datetime.datetime.now())
+    subscribe_time = models.DateTimeField()
     custid = models.IntegerField(blank=True, null=True)
     unsubscribe_time = models.DateTimeField()
 
@@ -64,7 +64,7 @@ class WechatInfoUnsub(models.Model):
 class WechatConfig(models.Model):
     tag = models.CharField(max_length=32, db_index=True, unique=True)
     value = models.CharField(max_length=256, null=True, default='')
-    touch_time = models.DateTimeField(null=True, default=datetime.datetime.now())
+    touch_time = models.DateTimeField(null=True)
     expire_seconds = models.IntegerField(null=True)
 
     def __unicode__(self):
