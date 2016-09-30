@@ -327,17 +327,17 @@ def show_charts(request):
         return notify_entry()
 
     try:
-        all_vote = Candidate.objects.aggregate(Sum('voted'))
+        all_vote = Candidate.objects.filter().order_by('-voted').first()
 
         all_candidates = Candidate.objects.all().order_by('-voted')
         candidate_rank_list = []
         i = 0
         for one_candidate in all_candidates:
             i += 1
-            if all_vote['voted__sum'] == 0:
+            if all_vote.voted == 0:
                 tmp = "\"" + "width: " + str(0) + "%" + "\"",
             else:
-                tmp = "\"" + "width: " + str(str(int(one_candidate.voted * 100 / all_vote['voted__sum']))) + "%" + "\""
+                tmp = "\"" + "width: " + str(str(int(one_candidate.voted * 100 / all_vote.voted))) + "%" + "\""
             candidate_rank_list.append({
                 "id": one_candidate.id,
                 "name": one_candidate.name,
